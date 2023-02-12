@@ -33,8 +33,12 @@ if (Test-Path $folderPath) {
 }
 
 # Removing the custom yt-dlp protocol
-Remove-Item -Path "Registry::HKEY_CURRENT_USER\SOFTWARE\Classes\$protocolName" -Force -Recurse | Out-Null
-Write-Host "Removed protocol: $protocolName"
+if (Test-Path "Registry::HKEY_CURRENT_USER\SOFTWARE\Classes\$protocolName") {
+    Remove-Item -Path "Registry::HKEY_CURRENT_USER\SOFTWARE\Classes\$protocolName" -Force -Recurse | Out-Null
+    Write-Host "Removed protocol: $protocolName"
+} else {
+    Write-Host "Protocol already removed: $folderPath"
+}
 
 # The uninstaller is done
 Write-Host "Uninstaller has finished successfully!"
