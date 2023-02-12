@@ -15,6 +15,7 @@ Write-Host @"
  \__, |\__|     \__,_|_| .__(_)_/_/   
  |___/                 |_| 
 
+v0.1.0
 A youtube-dl fork with additional features and fixes
 Uninstaller made by Antun Nitraj on github.com/antunnitraj
 -----------------------------------------------------------
