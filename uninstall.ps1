@@ -1,4 +1,4 @@
-﻿# Creating some variables
+# Creating some variables
 $protocolName = "yt-dlp"
 $folderPath = "$env:APPDATA\yt-dlp"
 
@@ -37,7 +37,7 @@ if (Test-Path "Registry::HKEY_CURRENT_USER\SOFTWARE\Classes\$protocolName") {
     Remove-Item -Path "Registry::HKEY_CURRENT_USER\SOFTWARE\Classes\$protocolName" -Force -Recurse | Out-Null
     Write-Host "Removed protocol: $protocolName"
 } else {
-    Write-Host "Protocol already removed: $folderPath"
+    Write-Host "Protocol already removed: $protocolName"
 }
 
 # The uninstaller is done
