@@ -34,10 +34,24 @@ if (-not (Test-Path $folderPath)) {
 }
 
 # Downloading yt-dlp
-Write-Host "Downloading binary to: $folderPath\yt-dlp.exe"
+Write-Host "Downloading yt-dlp to: $folderPath\yt-dlp.exe"
 Invoke-WebRequest -Uri "https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp.exe" -OutFile "$folderPath\yt-dlp.exe"
+
+# Downloading ffmpeg
+Write-Host "Downloading ffmpeg to: $folderPath\ffmpeg.zip"
+Invoke-WebRequest -Uri "https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-win64-lgpl-shared.zip" -OutFile "$folderPath\ffmpeg.zip"
+Write-Host "Unzipping ffmpeg.zip"
+Expand-Archive -Path "$folderPath\ffmpeg.zip" -DestinationPath "$folderPath"
+Write-Host "Copying ffmpeg binraies to: $folderPath"
+Copy-Item -Path "$folderPath\ffmpeg-master-latest-win64-lgpl-shared\bin\*" -Destination "$folderPath\" -Recurse
+Write-Host "Removing ffmpeg-master-latest-win64-lgpl-shared\ and ffmpeg.zip"
+Remove-Item "$folderPath\ffmpeg-master-latest-win64-lgpl-shared" -Recurse | Out-Null
+Remove-Item "$folderPath\ffmpeg.zip" -Recurse | Out-Null
+
+# Downloading script
+Write-Host "Downloading script to: $folderPath\yt-dlp.ps1"
 Invoke-WebRequest -Uri "https://raw.githubusercontent.com/antunnitraj/yt-dlp-protocol/main/yt-dlp.ps1" -OutFile "$folderPath\yt-dlp.ps1"
-Write-Host "Download finished successfully!"
+Write-Host "Downloads finished successfully!"
 
 # Creating the custom yt-dlp protocol
 New-Item -Path "Registry::HKEY_CURRENT_USER\SOFTWARE\Classes\$protocolName\shell\open\" -Name "command" -Force | Out-Null
