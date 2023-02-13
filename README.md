@@ -10,6 +10,7 @@ You can test it in any modern browser
 ```
 yt-dlp://https://url.of/media
 ```
+There is an extension i made to use it with: https://github.com/antunnitraj/yt-dlp-extension
 # Uninstall
 Run in powershell
 ```
