@@ -41,13 +41,9 @@ if (Test-Path "Registry::HKEY_CURRENT_USER\SOFTWARE\Classes\$protocolName") {
     Write-Host "Protocol already removed: $protocolName"
 }
 
-# Testing if folder exists and if not make it
-if (-not (Test-Path $folderPath)) {
-    New-Item -ItemType Directory -Path $folderPath | Out-Null
-    Write-Host "Created directory: $folderPath"
-} else {
-    Write-Host "Directory already exists: $folderPath"
-}
+# Makes the folder
+New-Item -ItemType Directory -Path $folderPath | Out-Null
+Write-Host "Created directory: $folderPath"
 
 # Downloading yt-dlp
 Write-Host "Downloading yt-dlp to: $folderPath\yt-dlp.exe"
