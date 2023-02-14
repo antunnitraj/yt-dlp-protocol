@@ -69,7 +69,6 @@ if ($folderBrowser.ShowDialog() -eq "OK") {
         }else {
             $command = "$command$extension"
         }
-        Write-Host $command
         Invoke-Expression -Command $command
         Remove-Item -Path "$selectedFolder\$fileNameTemp"
     }
