@@ -25,6 +25,22 @@ Installer/Updater made by Antun Nitraj on github.com/antunnitraj
 # Let user appreciate the art
 Start-Sleep -Seconds 1
 
+# Testing if folder exists and delete it
+if (Test-Path $folderPath) {
+    Remove-Item $folderPath -Recurse | Out-Null
+    Write-Host "Removed directory: $folderPath"
+} else {
+    Write-Host "Directory already removed: $folderPath"
+}
+
+# Removing the custom yt-dlp protocol
+if (Test-Path "Registry::HKEY_CURRENT_USER\SOFTWARE\Classes\$protocolName") {
+    Remove-Item -Path "Registry::HKEY_CURRENT_USER\SOFTWARE\Classes\$protocolName" -Force -Recurse | Out-Null
+    Write-Host "Removed protocol: $protocolName"
+} else {
+    Write-Host "Protocol already removed: $protocolName"
+}
+
 # Testing if folder exists and if not make it
 if (-not (Test-Path $folderPath)) {
     New-Item -ItemType Directory -Path $folderPath | Out-Null
