@@ -60,5 +60,5 @@ New-ItemProperty -Path "Registry::HKEY_CURRENT_USER\SOFTWARE\Classes\$protocolNa
 New-ItemProperty -Path "Registry::HKEY_CURRENT_USER\SOFTWARE\Classes\$protocolName\shell\open\command" -Name "(Default)" -Value "powershell $folderPath\yt-dlp.ps1 %1" -Force | Out-Null
 Write-Host "Created protocol: $protocolName"
 
-# The installer is done
-Write-Host "Installer has finished successfully!"
+# The installer/updater is done
+Write-Host "Installer/Updater has finished successfully!"
