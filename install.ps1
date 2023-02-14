@@ -17,7 +17,7 @@ Write-Host @"
 
 v0.1.2
 A youtube-dl fork with additional features and fixes
-Installer made by Antun Nitraj on github.com/antunnitraj
+Installer/Updater made by Antun Nitraj on github.com/antunnitraj
 -----------------------------------------------------------
 
 "@
