@@ -39,13 +39,13 @@ Invoke-WebRequest -Uri "https://github.com/yt-dlp/yt-dlp/releases/latest/downloa
 
 # Downloading ffmpeg
 Write-Host "Downloading ffmpeg to: $folderPath\ffmpeg.zip"
-Invoke-WebRequest -Uri "https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-win64-lgpl-shared.zip" -OutFile "$folderPath\ffmpeg.zip"
+Invoke-WebRequest -Uri "https://github.com/yt-dlp/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-win64-gpl-shared.zip" -OutFile "$folderPath\ffmpeg.zip"
 Write-Host "Unzipping ffmpeg.zip"
 Expand-Archive -Path "$folderPath\ffmpeg.zip" -DestinationPath "$folderPath"
 Write-Host "Copying ffmpeg binraies to: $folderPath"
-Copy-Item -Path "$folderPath\ffmpeg-master-latest-win64-lgpl-shared\bin\*" -Destination "$folderPath\" -Recurse
-Write-Host "Removing ffmpeg-master-latest-win64-lgpl-shared\ and ffmpeg.zip"
-Remove-Item "$folderPath\ffmpeg-master-latest-win64-lgpl-shared" -Recurse | Out-Null
+Copy-Item -Path "$folderPath\ffmpeg-master-latest-win64-gpl-shared\bin\*" -Destination "$folderPath\" -Recurse
+Write-Host "Removing ffmpeg folder and ffmpeg.zip"
+Remove-Item "$folderPath\ffmpeg-master-latest-win64-gpl-shared" -Recurse | Out-Null
 Remove-Item "$folderPath\ffmpeg.zip" -Recurse | Out-Null
 
 # Downloading script
